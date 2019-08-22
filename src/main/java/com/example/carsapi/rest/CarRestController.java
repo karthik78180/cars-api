@@ -4,10 +4,8 @@ import com.example.carsapi.dao.dto.Car;
 import com.example.carsapi.dao.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -34,6 +32,25 @@ public class CarRestController {
         Car car = carService.getCarByVin(vin);
         return ResponseEntity.ok().body(car);
     }
+
+    @RequestMapping(method = RequestMethod.POST, value = VERSION+ "/cars")
+    public ResponseEntity<Car> saveCar(@NotNull @NotEmpty @RequestBody Car car){
+         car = carService.saveCar(car);
+        return ResponseEntity.ok().body(car);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = VERSION+ "/cars/{vin}")
+    public void deleteCar(@NotNull @NotEmpty  @PathVariable("vin") String vin) {
+          carService.deleteByVin(vin);
+
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = VERSION+ "/cars/{vin}")
+   public Car replaceCar(@NotNull @NotEmpty @RequestBody Car car,@NotNull @NotEmpty  @PathVariable("vin") String vin) {
+
+        return carService.updateByVin(car, vin);
+                    }
+
 
 
 }
