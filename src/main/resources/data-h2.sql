@@ -7,6 +7,9 @@ CREATE TABLE Cars(
 
 );
 
-INSERT INTO Cars(VIN, Make, Model) VALUES  ('1234', 'Dodge', 'Durango'),
-                                            ('1235', 'Kia', 'Optima'),
-                                            ('1236', 'Honda','Accord');
+INSERT INTO Cars(VIN, Make, Model) VALUES  ('1234', 'Dodge    ', 'Durango'),
+                                            ('1235', 'Kia   ', 'Optima'),
+                                            ('1236', 'Honda   ','Accord'),
+                                            ('5674', 'abcd    ', 'Durango'),
+                                            ('9853', 'jhed   ', 'Optima'),
+                                            ('3748', 'ehjdfwe   ','Accord');
