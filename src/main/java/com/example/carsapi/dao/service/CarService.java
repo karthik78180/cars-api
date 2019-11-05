@@ -29,7 +29,7 @@ public class CarService {
     private static Car mapCarDomainToCar(CarDomain carDomain) {
         Car car = new Car();
         car.setModel(carDomain.getModel());
-        car.setMake(carDomain.getMake());
+        car.setMake(carDomain.getMake().trim());
         car.setVin(carDomain.getVin());
 
         return car;
