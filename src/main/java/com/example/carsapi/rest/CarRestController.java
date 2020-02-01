@@ -3,6 +3,7 @@ package com.example.carsapi.rest;
 import com.example.carsapi.dao.dto.Car;
 import com.example.carsapi.dao.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,8 @@ public class CarRestController {
     @Autowired
     public void setCarService(CarService carService){this.carService = carService;}
 
-    @RequestMapping(method = RequestMethod.GET, value = VERSION + "/cars")
+    @RequestMapping(method = RequestMethod.GET, value = VERSION + "/cars",  produces={"application/xml", "application/json"})
+    @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<List<Car>> getAllCars(){
         List<Car> cars = carService.getAllCars();
         return ResponseEntity.ok().body(cars);

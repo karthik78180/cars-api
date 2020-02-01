@@ -19,4 +19,5 @@ spring:
       hibernate:
         cache.use_query_cache: false
         show_sql: true
-
+server:
+  port: 9095
